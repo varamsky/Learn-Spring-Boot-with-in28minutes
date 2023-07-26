@@ -6,11 +6,14 @@ import com.in28minutes.springboot.learnjpaandhibernate.course.springdatajpa.Cour
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * When you have some code to run at the start of your application, you can implement the CommandLineRunner interface.
  */
 @Component
+@RestController
 public class CourseCommandLineRunner implements CommandLineRunner {
 //    @Autowired
 //    private CourseJdbcRepository repository;
@@ -50,5 +53,10 @@ public class CourseCommandLineRunner implements CommandLineRunner {
         System.out.println(repository.findByAuthor("Ranga Karnam"));
 
         System.out.println(repository.findByName("Learn Azure"));
+    }
+
+    @GetMapping("/check")
+    String dd(){
+        return "sdfafd";
     }
 }
