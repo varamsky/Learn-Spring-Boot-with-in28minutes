@@ -22,6 +22,9 @@ public class Todo {
     private LocalDate targetDate; // It is suggested to use LocalDate instead of Date
     private boolean done;
 
+    public Todo() {
+    }
+
     public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
         super();
         this.id = id;
