@@ -1,6 +1,7 @@
 # Getting Started
 
 An application to learn __Spring Boot__. The content is from the  Udemy course by in28minutes.
+Udemy Course name - [NEW] Master Spring Boot 3 & Spring Framework 6 with Java
 
 ## Technologies used
 
