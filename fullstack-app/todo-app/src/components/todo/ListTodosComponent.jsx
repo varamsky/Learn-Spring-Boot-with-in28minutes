@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import {useNavigate} from 'react-router-dom'
-import { retrieveAllTodosForUsernameApi, deleteTodoApi } from "./api/TodoApiService"
 import { useAuth } from "./security/AuthContext"
 
 function ListTodosComponent() {
@@ -23,29 +22,10 @@ function ListTodosComponent() {
 
     function refreshTodos() {
         
-        retrieveAllTodosForUsernameApi(username)
-        .then(response => {
-            setTodos(response.data)
-        }
-            
-        )
-        .catch(error => console.log(error))
     
     }
 
     function deleteTodo(id) {
-        console.log('clicked ' + id)
-        deleteTodoApi(username, id)
-        .then(
-
-            () => {
-                setMessage(`Delete of todos with id = ${id} successful`)
-                refreshTodos()
-            }
-            //1: Display message
-            //2: Update Todos list
-        )
-        .catch(error => console.log(error))
     }
 
     function updateTodo(id) {
