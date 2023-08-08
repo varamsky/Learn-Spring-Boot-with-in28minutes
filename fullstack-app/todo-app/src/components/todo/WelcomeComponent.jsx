@@ -1,6 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "./security/AuthContext";
+import {
+  retrieveHelloWorldBean,
+  retrieveHelloWorldPathVariable,
+} from "./api/HelloWorldApiService";
 
 function WelcomeComponent() {
   const { username } = useParams();
@@ -11,11 +15,19 @@ function WelcomeComponent() {
 
   function callHelloWorldRestApi() {
     console.log("called");
+    // retrieveHelloWorldBean()
+    //   .then(successfulResponse)
+    //   .catch(errorResponse)
+    //   .finally(() => console.log("cleanup"));
+
+    retrieveHelloWorldPathVariable("Ranga", authContext.token)
+      .then(successfulResponse)
+      .catch(errorResponse)
+      .finally(() => console.log("cleanup"));
   }
 
   function successfulResponse(response) {
     console.log(response);
-    //setMessage(response.data)
     setMessage(response.data.message);
   }
 
