@@ -10,7 +10,3 @@ export function retrieveHelloWorldPathVariable(username, token) {
     { headers: { Authorization: token } }
   );
 }
-
-export function executeBasicAuthenticationService(token) {
-  return apiClient.get(`/basicauth`, { headers: { Authorization: token } });
-}

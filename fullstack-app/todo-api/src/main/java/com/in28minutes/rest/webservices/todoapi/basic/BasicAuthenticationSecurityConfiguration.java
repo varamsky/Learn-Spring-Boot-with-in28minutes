@@ -9,7 +9,8 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
+// This is commented out right now as we are using JWT configuration and, we don't want Spring to pick up this as a configuration file.
+//@Configuration
 public class BasicAuthenticationSecurityConfiguration {
 
     @Bean
