@@ -19,3 +19,12 @@ If you wish to run this app locally please follow the below steps:
 -   Clone this repo
 -   Run `mvn spring-boot:run` or just click the start button on Java IDEs like IntelliJ Idea
 
+## The projects should be viewed in this order:
+
+1.	learn-spring-framework
+2.	learn-spring-boot
+3.	learn-jpa-and-hibernate
+4.	myfirstwebapp	
+5.	restful-web-services
+6.	fullstack-app
+7.	learn-spring-security
