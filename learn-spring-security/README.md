@@ -105,3 +105,36 @@ Hashing: [Hashing_Password_Login_diagram](https://upload.wikimedia.org/wikipedia
         - Create JWKSource using the JWKSet
     4. Use RSA Public Key for decoding
         - `NimbusJwtDecoder.withPublicKey(rsaKey.toRSAPublicKey()).build()`
+
+### Understanding Spring Security Authentication
+
+- Authentication is done as part of the Spring Security Filter Chain
+- This is the flow of the authentication process:-
+    1. `AuthenticationManager` - Authentication starts with the AuthenticationManager
+        - This is the interface which is responsible for authentication
+        - "Attempts to authenticate the passed Authentication object, returning a fully populated Authentication
+          object (including granted authorities) if successful."
+        - In Spring Security, authentication has 3 different things:-
+            1. Credentials - username and password
+            2. Principal - Details about the user
+            3. Authorities - Roles and authorities that the principal(user) has
+        - Before the authentication is invoked, the `Authentication` object would contain only credentials.
+        - If the authentication is successful then the `Authentication` object would also contain the Principal and
+          Authorities.
+    2. `AuthenticationProvider` - Perform specific authentication type
+        - For example, `JwtAuthenticationProvider` for JWT Authentication
+    3. `UserDetailsService` - Core interface to load the user data
+        - It has the `loadUserByUsername()` method
+            1. `UserDetailsService` would retrieve the user data from the method mentioned above.
+            2. It would send that data to the `AuthenticationProvider` which would check it against the user credentials
+               entered by the user.
+            3. If successful, the Principal and Authorities will be populated into the `Authentication` object.
+- In Spring, you can have multiple `AuthenticationProvider`s and `UserDetailsService`s active at the same time.
+    - For example, you might have certain users stored in a database and some other users stored in LDAP. In the same
+      authentication request you can check against all of those. That is why, one `AuthenticationManager` can talk to
+      multiple `AuthenticationProvider`s and you can also have multiple implementations of `UserDetailsService`s which
+      are involved.
+- Now, how is the Authentication result stored?
+    - `SecurityContextHolder` > `SecurityContext` > `Authentication` > `GrantedAuthority`
+    - `Authentication` - (After Authentication) holds user(Principal) details
+    - `GrantedAuthority` - An authority granted to principal(roles, scopes, ..)
